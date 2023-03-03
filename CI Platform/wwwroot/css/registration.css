@@ -1,0 +1,169 @@
+﻿body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.carousal-img {
+    width: 60vw;
+    height: 100vh;
+}
+
+.text {
+    width: 32vw;
+    height: 100vh;
+    margin: 0rem 5.2rem 15rem 5.2rem;
+}
+
+.pack_it{
+    margin-top: 2rem;
+}
+
+.whole-screen {
+    max-height:100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+/* For carousal CSS */
+
+
+/* For text-form CSS */
+.tags {
+    width: 22rem;
+    color: #414141;
+    /* font-style: NotoSans-Light; */
+}
+
+.privacy_policy {
+    color: #414141;
+    margin-top: 2rem;
+    margin-left: 8.5rem;
+}
+
+.textbox {
+    width: 24rem;
+    height: 2.5rem;
+}
+
+.tp {
+    margin-top: 1rem;
+}
+
+.password {
+    width: 24rem;
+    height: 2.5rem;
+}
+
+.b1 {
+    border-radius: 50px;
+    width: 99%;
+    margin-top: 2rem;
+    color: #F88634;
+    border-color: #F88634;
+    align-items: center;
+    height: 3rem;
+}
+
+.lost {
+    margin-top: 2rem;
+    width: 15rem;
+    margin-left: 9rem;
+}
+
+.registered {
+    margin-left: 6rem;
+}
+
+/* Media queries */
+/* For less than 1000px */
+@media screen and (max-width:1000px) {
+    .whole-screen {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text {
+        width: 32vw;
+        height: 100vh;
+        margin: 5rem 5.2rem 15rem 17rem;
+    }
+
+    .tags {
+        color: #414141;
+        font-size: 1.5rem;
+    }
+
+    .textbox {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .password {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .b1 {
+        border-radius: 50px;
+        width: 151%;
+        margin-top: 2rem;
+        color: #F88634;
+        border-color: #F88634;
+        align-items: center;
+        height: 3rem;
+    }
+
+    .privacy_policy {
+        color: #414141;
+        margin-top: 2rem;
+        margin-left: 11rem;
+        margin-bottom: 3rem;
+    }
+}
+
+/* For less than 800px  */
+
+@media screen and (max-width:800px) {
+    .whole-screen {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text {
+        width: 32vw;
+        height: 100vh;
+        margin: 3rem 5.2rem 15rem 10rem;
+    }
+
+    .tags {
+        color: #414141;
+        font-size: 1.5rem;
+    }
+
+    .textbox {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .password {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .b1 {
+        border-radius: 50px;
+        width: 200%;
+        margin-top: 2rem;
+        color: #F88634;
+        border-color: #F88634;
+        align-items: center;
+        height: 3rem;
+    }
+
+    .privacy_policy {
+        color: #414141;
+        margin-top: 2rem;
+        margin-left: 14rem;
+        margin-bottom: 3rem;
+    }
+}

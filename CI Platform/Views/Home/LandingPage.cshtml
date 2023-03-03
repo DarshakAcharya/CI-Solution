@@ -1,0 +1,985 @@
+﻿ @{
+    Layout = "_none";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page | Company</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+     <link rel="stylesheet" href="~/css/landingpage.css">
+</head>
+ 
+
+<body>
+
+  <header class="p-3 mb-3 border-bottom" style="margin-bottom: 0rem !important;">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <!-- <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li> -->
+          <li><a href="#" class="nav-link px-2 link-dark">Stories</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle policy" href="#" data-bs-toggle="dropdown"
+              aria-expanded="false">Policy</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Policy 1</a></li>
+              <li><a class="dropdown-item" href="#">Policy 2</a></li>
+              <li><a class="dropdown-item" href="#">Policy 3</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="~/Images/user-img.png" alt="user_img" width="40" height="40"
+              class="rounded-circle">Evan Donohue
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><a class="dropdown-item" href="#">My profile</a></li>
+            <li><a class="dropdown-item" href="#">Volunteering timesheet</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- For NAVIGATION BAR -->
+
+  <!-- Using Grid system -->
+
+  <!--------------------------------- My Old Navbar------------------------------->
+  <div class="row">
+
+    <div class="search_b col-6">
+      <img src="~/Images/search.png" alt="search_icon" class="search_img">
+     
+     
+        <!-- <input type=" text" placeholder="Search mission..." class="search_width"> -->
+      <input class="form-control search_width" type="search" placeholder="Search mission..." aria-label="Search">
+
+
+
+    </div>
+
+
+    <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+    <div class="col-1 pad_0">
+      <div class="card">
+
+        <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown"
+          aria-expanded="false">Country</a>
+        <ul class="dropdown-menu">
+          <input type="checkbox" id="India" name="India" value="India">
+          <label for="India"> India</label><br>
+          <input type="checkbox" id="Australia" name="Australia" value="Australia">
+          <label for="Australia"> Australia</label><br>
+          <input type="checkbox" id="USA" name="USA" value="USA">
+          <label for="USA">USA</label><br>
+        </ul>
+
+      </div>
+    </div>
+    <div class="col-1 pad_0">
+      <div class="card">
+
+        <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown" aria-expanded="false">City</a>
+        <ul class="dropdown-menu">
+          <input type="checkbox" id="Mumbai" name="Mumbai" value="Mumbai">
+          <label for="Mumbai"> Mumbai</label><br>
+          <input type="checkbox" id="Delhi" name="Delhi" value="Delhi">
+          <label for="Delhi"> Delhi</label><br>
+          <input type="checkbox" id="Bhavnagar" name="Bhavnagar" value="Bhavnagar">
+          <label for="Bhavnagar"> Bhavnagar</label><br>
+          <input type="checkbox" id="Ahmedabad" name="Ahmedabad" value="Ahmedabad">
+          <label for="Ahmedabad">Ahmedabad</label><br>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="col-1 pad_0">
+      <div class="card">
+
+        <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown"
+          aria-expanded="false">Theme</a>
+        <ul class="dropdown-menu">
+          <input type="checkbox" id="Theme-1" name="Theme-1" value="Theme-1">
+          <label for="Theme-1"> Theme-1</label><br>
+          <input type="checkbox" id="Theme-2" name="Theme-2" value="Theme-2">
+          <label for="Theme-2"> Theme-2</label><br>
+          <input type="checkbox" id="Theme-3" name="Theme-3" value="Theme-3">
+          <label for="Theme-3">Theme-3</label><br>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="col-1 pad_0">
+      <div class="card">
+
+        <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown"
+          aria-expanded="false">Skills</a>
+        <ul class="dropdown-menu">
+          <input type="checkbox" id="Skill-1" name="Skill-1" value="Skill-1">
+          <label for="Skill-1"> Skill-1</label><br>
+          <input type="checkbox" id="Skill-2" name="Skill-2" value="Skill-2">
+          <label for="Skill-2"> Skill-2</label><br>
+          <input type="checkbox" id="Skill-3" name="Skill-3" value="Skill-3">
+          <label for="Skill-3"> Skill-3</label><br>
+          <input type="checkbox" id="Skill-4" name="Skill-4" value="Skill-4">
+          <label for="Skill-4">Skill-4</label><br>
+          <input type="checkbox" id="Skill-5" name="Skill-5" value="Skill-5">
+          <label for="Skill-5"> Skill-5</label><br>
+        </ul>
+
+      </div>
+    </div>
+    <div class="col-1">
+      <!-- Demo div, it'll be removed very soon! -->
+    </div>
+  </div>
+
+  <!-- </div> -->
+  <!-------------------------------------- Header closed----------------------------------------------->
+
+  <!-------------------------------------- Main Content Start----------------------------------------------->
+  <!-- Cards  -->
+  <div class="content">
+    <div class="row">
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+  
+          <img src="~/Images/Grow-trees-1.png" class="card-img-top" alt="login-image"
+            style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Environment
+            </div>
+  
+            <h5 class="card-title">Grow Trees-On the path to environment sustainability</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">Tree Canada
+                </div>
+                <div class="col-6">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    From 10/01/2019 until 25/02/2019
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col">
+                    <img src="~/Images/Seats-left.png" alt="seats left" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">10</p>
+                      <p class="seats_text">Seats left</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col">
+                    <img src="~/Images/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+          <img src="~/Images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png" class="card-img-top" alt="login-image"
+            style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Children
+            </div>
+  
+            <h5 class="card-title">Education Supplies for Every Pair of Shoes Sold</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">Australian Paradise
+                </div>
+                <div class="col-6">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    From 10/01/2019 until 25/02/2019
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col-7">
+                    <img src="~/Images/Already-volunteered.png" alt="Alraedy Volunteered"
+                      class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">250</p>
+                      <p class="seats_text">Already Volunteered</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col-5">
+                    <img src="~/Images/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+          <img src="~/Images/Nourish-the-Children-in--African-country-1.png" class="card-img-top"
+            alt="login-image" style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Nutrition
+            </div>
+  
+            <h5 class="card-title">Nourish the Children in African country</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">The Hunger
+                </div>
+                <div class="col-6">
+                 <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    From 10/01/2019 until 25/02/2019
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col">
+                    <img src="~/Images/Seats-left.png" alt="seats left" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">10</p>
+                      <p class="seats_text">Seats left</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col">
+                    <img src="~/Images/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="row row-2">
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+  
+          <img src="~/Images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png" class="card-img-top"
+            alt="login-image" style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Environment
+            </div>
+  
+            <h5 class="card-title">CSR initiative stands for Coffee and Farmer Equity</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">CSE Network
+                </div>
+                <div class="col-6">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    Ongoing Opportunity
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <!-- <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col">
+                    <img src="./CI Platform Assets/Seats-left.png" alt="seats left" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">10</p>
+                      <p class="seats_text">Seats left</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col">
+                    <img src="./CI Platform Assets/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div>
+              </li> -->
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col-7">
+                    <img src="~/Images/Already-volunteered.png" alt="Alraedy Volunteered"
+                      class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">250</p>
+                      <p class="seats_text">Already Volunteered</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+          <img src="~/Images/Animal-welfare-&-save-birds-campaign.png" class="card-img-top"
+            alt="Animal welfare and save birds" style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Animals
+            </div>
+  
+            <h5 class="card-title">Animal welfare and save birds campaign</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">JR foundation
+                </div>
+                <div class="col-6">
+                 <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    Plant 10,000 Trees
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col-5">
+                    <img src="~/Images/Seats-left.png" alt="seats left" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">10</p>
+                      <p class="seats_text">Seats left</p>
+                    </div>
+                  </div>
+  
+                  <div class="col-2">
+                    <img src="~/Images/achieved.png" alt="achieved-img" class="seats_left_img">
+                    <!-- <div> -->
+                    <p class="seats_text achieved">8000 achieved</p>
+                    <!-- </div> -->
+                  </div>
+  
+  
+                  <div class="progress col-5 progressBar_color" role="progressbar" aria-label="Info example"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar " style="width: 80%; background-color: #F88634;"></div><br>
+                  </div>
+  
+  
+  
+  
+                  <!-- </div> -->
+  
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+          <img src="~/Images/Plantation-and-Afforestation-programme.png" class="card-img-top"
+            alt="Plantation and afforestation program" style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Health
+            </div>
+  
+            <h5 class="card-title">Plantation and Afforestation Programme</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">Amaze Doctors
+                </div>
+                <div class="col-6">
+                 <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    Plant 10,000 Trees
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+  
+                  <div class="col-2">
+                    <img src="~/Images/achieved.png" alt="achieved-img" class="seats_left_img">
+                  </div>
+  
+                  <div class="progress col-10 progressBar_color" role="progressbar" aria-label="Info example"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar " style="width: 80%; background-color: #F88634;"></div>
+                  </div>
+                  <!-- <div class="no_and_text"> -->
+  
+                  <p class="seats_text achieved-2">8000 achieved</p>
+                  <!-- </div> -->
+  
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  
+    <div class="row row-2">
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+  
+          <img src="~/Images/Grow-trees-1.png" class="card-img-top" alt="login-image"
+            style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Education
+            </div>
+  
+            <h5 class="card-title">Grow Trees-On the path to environment sustainability</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non cum
+              asperiores corporis officiis! Voluptatem odit, sed minima accusamus modi ullam consequuntur earum eum
+              impedit, illo numquam perspiciatis illum. Veniam minima soluta odit quidem. Labore excepturi sed minima accusamus modi minima soluta
+              voluptatem...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">Tree Canada
+                </div>
+                <div class="col-6">
+                 <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+              <!-- <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    From 10/01/2019 until 25/02/2019
+                  </div>
+                </li>
+                <hr>
+              </div> -->
+  
+              <li class="list-group-item">
+                <!-- <div class="row">
+                  <div class="seats_container col">
+                    <img src="~/Images/Seats-left.png" alt="seats left" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">10</p>
+                      <p class="seats_text">Seats left</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col">
+                    <img src="~/Images/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div> -->
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button" style="width: 10rem !important;">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">View deatils </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+          <img src="~/Images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png" class="card-img-top" alt="login-image"
+            style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Children
+            </div>
+  
+            <h5 class="card-title">Education Supplies for Every Pair of Shoes Sold</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">Tree Canada
+                </div>
+                <div class="col-6">
+                <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    From 10/01/2019 until 25/02/2019
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col-7">
+                    <img src="~/Images/Already-volunteered.png" alt="Alraedy Volunteered"
+                      class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">250</p>
+                      <p class="seats_text">Already Volunteered</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col-5">
+                    <img src="~/Images/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card" style="width: 28rem;">
+  
+          <img src="~/Images/Nourish-the-Children-in--African-country-1.png" class="card-img-top"
+            alt="login-image" style="width: 28rem;height: 14rem;">
+  
+          <div class="card-body">
+  
+            <div class="env_button">
+              Nutrition
+            </div>
+  
+            <h5 class="card-title">Nourish the Children in African country</h5>
+            <p class="card-text" style="color: grey;"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Necessitatibus, cumque itaque.
+              Nobis aspernatur...
+            </p>
+            <ul class="list-group list-group-flush">
+              <div class="row">
+                <div class="col-6">
+                  <li class="list-group-item">Junior Charity
+                </div>
+                <div class="col-6">
+                 <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/selected-star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                  <img src="~/Images/star.png" alt="star" class="stars">
+                </div>
+                </li>
+              </div>
+  
+              <div class="ruler">
+                <hr>
+                <li class="list-group-item">
+                  <div class="round_button">
+                    Ongoing Opportunity
+                  </div>
+                </li>
+                <hr>
+              </div>
+  
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="seats_container col">
+                    <img src="~/Images/Seats-left.png" alt="seats left" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">10</p>
+                      <p class="seats_text">Seats left</p>
+                    </div>
+                  </div>
+  
+                  <div class="seats_container col">
+                    <img src="~/Images/deadline.png" alt="deadline" class="seats_left_img">
+                    <div class="no_and_text">
+                      <p class="seats_no">09/01/2019</p>
+                      <p class="seats_text">Deadline</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+  
+            </ul>
+            <hr>
+            <div class="card-body" style="padding-left: 9.5rem;">
+              <!-- <a href="#" class="card-link">Card link</a> -->
+              <button type="button">
+                <div class="apply_btn">
+                  <p class="apply_btn_text">Apply </p>
+                  <img src="~/Images/right-arrow.png" alt="apply"
+                    style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                </div>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+  
+  <!-- Cards End -->
+
+  <!--------------------------------- Using Albums from Bootstrap------------------>
+   
+
+  <!--------------------------------- Album Finished ------------------------------>
+
+
+
+
+  <!-------------------------------------- Main Content Closed----------------------------------------------->
+
+  <!-------------------------------------- Pagination Start----------------------------------------------->
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-------------------------------------- Pagination Closed----------------------------------------------->
+
+
+  <!-------------------------------------- Footer Start------------------------------------------------------->
+
+  <footer>
+    <hr>
+    <span class="footer_link"><a   target="_main" class="footer_text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy policy</a></span>
+  </footer>
+
+  <!-------------------------------------- Footer Closed------------------------------------------------------->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

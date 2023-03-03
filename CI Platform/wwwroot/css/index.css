@@ -1,0 +1,166 @@
+﻿
+    body
+
+{
+    width: 100vw;
+    height: 100vh;
+}
+
+.carousal-img {
+    width: 60vw;
+    height: 100vh;
+}
+
+.text {
+    width: 22vw;
+    height: 100vh;
+    margin: 0rem 5.2rem 15rem 5.2rem;
+}
+
+.pack_it{
+    margin-top:15rem;
+}
+.whole-screen {
+    max-height:100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.lost {
+    margin-top: 1rem;
+    margin-left: 8rem;
+}
+
+/* For carousal CSS */
+
+
+/* For text-form CSS */
+.tags {
+    color: #414141;
+    /* font-style: NotoSans-Light; */
+}
+
+.privacy_policy {
+    color: #414141;
+    margin-top: 8rem;
+    margin-left: 10rem;
+}
+
+.textbox {
+    width: 25rem;
+    height: 3.5rem;
+}
+
+.tp {
+    margin-top: 1rem;
+}
+
+.password {
+    width: 25rem;
+    height: 3.5rem;
+}
+
+.b1 {
+    border-radius: 50px;
+    width: 99%;
+    margin-top: 2rem;
+    color: #F88634;
+    border-color: #F88634;
+    align-items: center;
+    height: 3rem;
+}
+
+/* Media queries */
+/* For less than 1000px */
+@media screen and (max-width:1000px) {
+    .whole-screen {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text {
+        width: 34vw;
+        height: 100vh;
+        margin: 10rem 5.2rem 15rem 14rem;
+    }
+
+    .tags {
+        width: 28rem;
+        color: #414141;
+        font-size: 1.5rem;
+    }
+
+    .textbox {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .password {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .b1 {
+        border-radius: 50px;
+        width: 144%;
+        margin-top: 2rem;
+        color: #F88634;
+        border-color: #F88634;
+        align-items: center;
+        height: 3rem;
+    }
+}
+
+/* For less than 800px  */
+
+@media screen and (max-width:800px) {
+    .whole-screen {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text {
+        width: 34vw;
+        height: 100vh;
+        margin: 15rem 5.2rem 15rem 10rem;
+    }
+
+    .tags {
+        color: #414141;
+        font-size: 1.5rem;
+        width: 28rem;
+    }
+
+    .textbox {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .password {
+        width: 30rem;
+        height: 4.5rem;
+    }
+
+    .b1 {
+        border-radius: 50px;
+        width: 174%;
+        margin-top: 2rem;
+        color: #F88634;
+        border-color: #F88634;
+        align-items: center;
+        height: 3rem;
+    }
+
+    .lost {
+        margin-left: 7rem;
+    }
+
+    .privacy_policy {
+        width: 7rem;
+        color: #414141;
+        margin-top: 8rem;
+        margin-left: 10rem;
+    }
+}
+
+  
