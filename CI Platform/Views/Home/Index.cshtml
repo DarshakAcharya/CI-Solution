@@ -1,4 +1,7 @@
-﻿ @{
+﻿@using CI_Platform.Models.ViewModels
+@model LoginVM 
+
+@{
     Layout = "_none";
 }
 <!doctype html>
@@ -65,19 +68,24 @@
             <!-- For text -->
             
             <div class="text">
-                <div class="pack_it"
-                 <p class="tags">Email Address</p>
-                 <input type="text" class="textbox" placeholder="evan.donohue@gmail.com">
+                <form method="post" class="pack_it">
+                    <div>
+                        @ViewBag.loginerror
+                    </div>
+                 <label asp-for="Email" class="tags">Email Address</label>
+                 <input asp-for="Email" type="text" class="textbox" placeholder="evan.donohue@gmail.com">
+                 <span asp-validation-for="Email"></span>
 
-                 <p class="tags tp">Password</p>
-                 <input type="password"  class="password" placeholder="6472348">
+                 <label asp-for="Password" class="tags tp">Password</label>
+                 <input asp-for="Password" type="password"  class="password" placeholder="6472348">
+                 <span asp-validation-for="Password"></span>
 
-                 <a asp-area="" asp-controller="Home" asp-action="LandingPage"> <button type="button" class="btn btn-outline-warning b1">Login</button></a>
+                 <a> <button type="submit" class="btn btn-outline-warning b1">Login</button></a>
 
                  <a   style="text-decoration: none;" target="_main" asp-area = "" asp-controller="Home" asp-action="ForgotPassword"><p class="tags lost">Lost your password?</p></a>
                  <p class="tags">Don't have an account? <a style="text-decoration: none !important; color: #414141;" target="_main" asp-area = "" asp-controller="Home" asp-action="Registration">  Create an account</a></p>
                  <a   style="text-decoration: none;" asp-area = "" asp-controller="Home" asp-action="Privacy"><p class="privacy_policy" >Privacy policy</p></a>
-                </div> 
+                </form> 
             
              
             </div>

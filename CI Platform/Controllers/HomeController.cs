@@ -24,8 +24,37 @@ namespace CI_Platform.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Index(LoginVM model)
+
+        {
+            var Ab =_db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password==model.Password);
+            if (Ab == null)
+            {
+                ViewBag.loginerror = "email adress & password not match";
+                return View();  
+            }
+
+            return RedirectToAction("LandingPage", "Home");
+        }
+
+         
         public IActionResult ForgotPassword()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var ABC = _db.Users.FirstOrDefault(u => u.Email == model.Email);
+                if (ABC == null)
+                {
+                    ViewBag.Emailnotexist = "email adress is not exist";
+                }
+            }
             return View();
         }
 
