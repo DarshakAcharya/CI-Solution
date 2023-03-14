@@ -2,20 +2,14 @@
 
 namespace CI_Platform.Models.ViewModels
 {
-    public class RegisterVM
+    public class ResetPasswordVM
     {
-        [Required]
-        public string? FirstName { get; set; }
+        [Required(ErrorMessage = "Please Enter Email")]
+        public string? Email { get; set; }
 
-        [Required]
-        public string? LastName { get; set; }
+       /* public string Token { get; set; } = null!;  */
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = null!;
-
-        [Required]
-        public long PhoneNumber { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -26,5 +20,8 @@ namespace CI_Platform.Models.ViewModels
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; } = null!;
+
+        [Required]
+        public string Token { get; set; }
     }
 }
