@@ -2,6 +2,8 @@
 using CI_Platform.Models.ViewModels;
 using CI_Platform_Entites.Data;
 using CI_Platform_Entites.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -35,7 +37,9 @@ namespace CI_Platform.Controllers
                 return View();  
             }
 
-            return RedirectToAction("LandingPage", "Home");
+            HttpContext.Session.SetString("UserId", Ab.UserId.ToString());
+
+            return RedirectToAction("LandingPage", "Home" ,new{@id=Ab.UserId});
         }
 
          
@@ -110,10 +114,26 @@ namespace CI_Platform.Controllers
             return View();
         }
 
-        public IActionResult LandingPage()
+        public IActionResult LandingPage(long id)
         {
+            string myVariable = HttpContext.Session.GetString("UserId");
+            if(myVariable == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.user = user;
             return View();
         }
+
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
 
         public IActionResult MissionListingPage()
         {
