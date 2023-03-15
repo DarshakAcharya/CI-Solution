@@ -10,7 +10,7 @@ builder.Services.AddDbContext<CiPlatformContext>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(0.5); // set session timeout
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // set session timeout
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
