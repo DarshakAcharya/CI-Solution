@@ -15,6 +15,10 @@ namespace CI_Platform.Controllers
 
         private readonly CiPlatformContext _db;
 
+        private List<Mission> Missions = new List<Mission>();
+        
+        private List<MissionVM> missionVMList = new List<MissionVM>();
+
         public HomeController(ILogger<HomeController> logger, CiPlatformContext db)
         {
             _logger = logger;
@@ -42,6 +46,12 @@ namespace CI_Platform.Controllers
             return RedirectToAction("LandingPage", "Home" ,new{@id=Ab.UserId});
         }
 
+        public IActionResult Filter()
+        {
+            
+            return PartialView();
+        }
+
          
         public IActionResult ForgotPassword()
         {
@@ -56,7 +66,7 @@ namespace CI_Platform.Controllers
                 var ABC = _db.Users.FirstOrDefault(u => u.Email == model.Email);
                 if (ABC == null)
                 {
-                    ViewBag.Emailnotexist = "email adress is not exist";
+                    ViewBag.Emailnotexist = "email address does not exist";
                 }
             }
             return View();
@@ -123,7 +133,65 @@ namespace CI_Platform.Controllers
             }
             var user = _db.Users.FirstOrDefault(e => e.UserId == id);
             ViewBag.user = user;
-            return View();
+            var result = from Cmission in _db.Missions
+                         join Mission_Theme in _db.MissionThemes on Cmission.ThemeId equals Mission_Theme.MissionThemeId
+                         select new { Mission_Theme.Title,Cmission.MissionId};
+            var MyCity = from Mission in _db.Missions
+                         join City in _db.Cities on Mission.CityId equals City.CityId
+                         select new { Mission.CityId, City.Name };
+            var Goal = from Gmission in _db.Missions
+                       join GoalMission in _db.GoalMissions on Gmission.MissionId equals GoalMission.MissionId
+                       select new { Gmission.MissionId, GoalMission.GoalValue, GoalMission.GoalObjectiveText };
+            Missions = _db.Missions.ToList();
+
+
+
+            foreach (var mission in Missions)
+            {
+                var theme = result.Where(result => result.MissionId == mission.MissionId).FirstOrDefault();
+                var city = MyCity.Where(MyCity => MyCity.CityId == mission.CityId).FirstOrDefault();
+                var goal = Goal.Where(Goal => Goal.MissionId == mission.MissionId).FirstOrDefault();
+                string[] startDate = mission.StartDate.ToString().Split(' ');
+                string[] endDate = mission.EndDate.ToString().Split(' ');
+                missionVMList.Add(new MissionVM()
+                {
+                    MissionId = mission.MissionId,
+                    Title = mission.Title,
+                    ShortDescription = mission.ShortDescription,
+                    Description = mission.Description,
+                    Organization = mission.OrganizationName,
+                    OrganizationDetails = mission.OrganizationDetail,
+                    //Rating = mission.MissionRatings,
+                    //ADD MISSION IMAGE URL HERE
+                    //Theme = mission.Theme,
+                    //ADD PROGRESS HERE
+                    //ADD recent volunteers here
+                    missionType = mission.MissionType,
+                    isFavrouite = mission.FavoriteMissions.Any(),
+                    createdAt = DateTime.Now,
+                    Theme = theme.Title,
+
+
+                    StartDate = startDate[0],
+                    EndDate = endDate[0],
+                    //City = mission.City,
+                    City = city.Name,
+                    NoOfSeatsLeft =int.Parse(mission.Availability),
+                    progress = int.Parse(goal.GoalValue),
+                    GoalAim = goal.GoalObjectiveText,
+
+                })  ;
+            }
+
+            MissionListingVM missionListingVM = new MissionListingVM
+            {
+                Missions = missionVMList,
+                MissionCount = missionVMList.Count(),
+
+            };
+
+             
+            return View(missionListingVM);
         }
 
 

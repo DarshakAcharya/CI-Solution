@@ -1,0 +1,296 @@
+﻿@using CI_Platform.Models.ViewModels
+@model MissionListingVM
+@{
+    ViewData["Title"] = "_MissionListingPartial";
+}
+
+ <!-------------------------------------- Main Content Start----------------------------------------------->
+  <!-- Cards  -->
+
+   <!-- For Explore Bar -->
+<div class="d-flex" style="justify-content: space-between; margin: 1rem; margin-left: 2rem;">
+  <h2>Explore @Model.MissionCount Missions</h2>
+
+
+<div class="d-flex" >
+  <div class="dropdown">
+    <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-top: 0rem !important; margin-right: 1rem;">
+      Sort by
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Name</a></li>
+      <li><a class="dropdown-item" href="#">Date</a></li>
+      <li><a class="dropdown-item" href="#">Goal Based Missions</a></li>
+      <li><a class="dropdown-item" href="#">Time Based Missions</a></li>
+    </ul>
+  </div>
+
+  <a href="" onclick="grid()"><img src="~/Images/grid.png" alt="grid view" style="width: 2rem;margin-top: 0.5rem;
+    margin-right: 1rem;"></a>
+  <a href="" onclick="list()"><img src="~/Images/list.png" alt="list view" style="width: 2rem;margin-top: 0.5rem;
+    margin-right: 1rem;"></a>
+</div>
+</div>
+  <!-- Explore Bar Ends here -->
+
+
+  <div class="album py-5 mx-5 bg-light" id="grid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  
+    
+          @foreach(var mission in Model.Missions)
+                {
+                    <div class="missioncard col-12 colleftg-4">
+                   <div class="card" style="height:100%">
+
+
+
+                            <div class="img-event">
+                                <img class="card-img-top missionimg"
+                                     src="~/Images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png" alt="Card image cap">
+
+                                <div class="landing-page-top-left @(mission.userApplied? "":"d-none")">Applied</div>
+
+                                <div class="landing-page-top-right"><img src="~/images/pin.png" alt="">@mission.City</div>
+
+                                <div class="landing-page-bottom-right d-flex flex-column">
+                                    <a class="mb-2 landing-page-btn-img" onclick="">
+                                        <i class="bi bi-heart-fill"  style=""></i>
+                                    </a><a class="landing-page-btn-img" data-bs-toggle="modal" id="@mission.MissionId" onclick="" data-bs-target="#exampleModal">
+                                        <img src="~/images/user.png" alt="">
+                                    </a>
+                                
+                                </div>
+
+                                <button class="theme-btn " style="margin-left: -0.5rem;
+                                  margin-top: -0.5rem !important;">@mission.Theme</button>
+                            </div>
+
+
+
+
+                            <div class="card-body">
+                                <h5 class="card-title demo-1 mt-3"><strong>@mission.Title</strong></h5>
+                                <p class="card-text demo-2">
+                                    @mission.ShortDescription
+                                </p>
+                                <div class="d-flex">
+                                    <p class="me-auto">@mission.Organization</p>
+                                    
+                                  <div class="col-6">
+                                    <img src="~/Images/selected-star.png" alt="star" class="stars star_padding">
+                                    <img src="~/Images/selected-star.png" alt="star" class="stars">
+                                    <img src="~/Images/selected-star.png" alt="star" class="stars">
+                                    <img src="~/Images/star.png" alt="star" class="stars">
+                                    <img src="~/Images/star.png" alt="star" class="stars">
+                                  </div>
+                                   
+                                    
+                                </div>
+
+                                
+                                <div class="rule d-flex mt-1">
+                                    <hr>
+                                    <button class="date-btn mt-1" style="font-size: .8rem; width:15rem !important; margin-top:-0.5rem !important; margin-left:0rem !important">From @mission.StartDate untill @mission.EndDate</button>
+                                    <hr>
+                                </div>
+
+                                <div class="d-flex">
+                                    <div class="d-flex me-auto ">
+                                        <img src="~/images/Seats-left.png" alt="" class="mt-2" style="width: 2.2rem;height: 2.4rem;">
+                                        <div class="ms-2 ">@mission.NoOfSeatsLeft
+                                            <fs-2></fs-2><br>
+                                            <fs-5> Seats left</fs-5>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+
+                                        @if (mission.missionType == "Time")
+                                        {
+                                            <img src="~/images/deadline.png" alt="" class="mt-2">
+                                            <div class="ms-2 ">
+                                                <fs-2></fs-2><br>
+                                                <fs-5>Deadline</fs-5>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <img src="~/images/mission.png" style="width: 2.2rem;height: 2.4rem;" alt="" class="mt-2">
+                                            <div class="ms-2" style="width:11vw;">
+                                                <div class="progress mt-2" role="progressbar" style="width:10vw;" aria-label="Example with label" aria-valuenow=@mission.progress aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-warning" style="width:@mission.progress%"><span style="color:black">@mission.progress%</span></div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <a class="applybtn d-flex" style="width:fit-content; text-decoration:none" href="/Employee/Home/MissionDetail/@ViewBag.user.UserId?missionId=@mission.MissionId">
+                                    <span class="applytxt">Apply</span>
+                                    <div>
+                                        <img src="~/images/right-arrow.png" alt="">
+                                    </div>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                }
+    </div>
+  </div>
+
+  
+  
+  <div id="list" class="d-none">
+                @foreach(var mission in Model.Missions)
+            { 
+              <div class="mb-2" >
+                    <div style="display: flex;" class="row-card">
+                        <div class="image">
+                          <img
+                            src="~/Images/Plantation-and-Afforestation-programme-1.png"
+                            alt="" height="300">
+                        </div>
+
+            <div class="card-body ms-5">
+              <div class="wrap justify-content-between mt-4">
+                <div class="sub-wrap">
+                  <div class="location">
+                    <img src="~/Images/pin1.png" alt="location"
+                      class="logo-text">
+                    <p class="line-text">@mission.City</p>
+                  </div>
+
+                  <div class="location">
+                    <img src="~/Images/web.png" alt="location"
+                      class="logo-text logo-text-m">
+                    <p class="line-text">@mission.Theme</p>
+                  </div>
+
+                  <div class="location">
+                    <img src="~/Images/organization.png" alt="location"
+                      class="logo-text logo-text-m">
+                    <p class="line-text">@mission.Organization</p>
+                  </div>
+                </div>
+
+        
+                <div class="location me-5">
+                  <img src="~/Images/selected-star.png" alt="star"
+                    class="stars star_padding">
+                  <img src="~/Images/selected-star.png" alt="star"
+                    class="stars">
+                  <img src="~/Images/selected-star.png" alt="star"
+                    class="stars">
+                  <img src="~/Images/selected-star.png" alt="star"
+                    class="stars">
+                  <img src="~/Images/selected-star.png" alt="star"
+                    class="stars">
+                </div>
+
+              </div>
+
+
+              <h3>@mission.Title</h3>
+              <p class="aim-text">@mission.GoalAim</p>
+
+      
+              <div class="row">
+                <div class="seats_container col-2">
+                  <img src="~/Images/Seats-left.png" alt="seats left" class="seats_left_img">
+                  <div class="no_and_text">
+                    <p class="seats_no">@mission.NoOfSeatsLeft</p>
+                    <p class="seats_text">Seats left</p>
+                  </div>
+                </div>
+
+                <div class="col-2 set">
+                  <img src="~/Images/achieved.png" alt="achieved-img" class="seats_left_img">
+           
+                  <p class="seats_text achieved">Achieved</p>
+          
+                </div>
+
+
+                <div class="progress col-1 progressBar_color mt-1" role="progressbar" aria-label="Info example"
+                  aria-valuenow="@mission.progress" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar " style="width: @mission.progress%; background-color: #F88634;">@mission.progress%</div><br>
+                </div>
+
+                <div class="seats_container col-2">
+                  <img src="~/Images/calender.png" alt="seats left" class="seats_left_img">
+                  <div class="no_and_text">
+                    <p class="seats_text">From @mission.StartDate</p>
+                    <p class="seats_text">Until @mission.EndDate</p>
+                  </div>
+                </div>
+
+                <div class="seats_container col-2">
+                  <img src="~/Images/tools.svg" alt="seats left" class="tools_img">
+                  <div class="no_and_text">
+                    <p class="seats_text">Skills</p>
+                    <p class="seats_text">Botany</p>
+                  </div>
+                </div>
+
+                <button type="button" style="width: 13rem !important; height: 4rem !important;">
+                  <div class="apply_btn">
+                    <p class="apply_btn_text">View details </p>&nbsp; &nbsp;&nbsp
+                    <img src="~/Images/right-arrow.png" alt="apply"
+                      style="height: 1rem; margin-top: 0.9rem; margin-left: 0.5rem;">
+                  </div>
+                </button>
+
+       
+
+
+            </div>
+  
+           </div>
+          </div>
+        </div>
+ 
+        
+            }
+</div>
+
+  
+  
+  <!-- Cards End -->
+
+  <!--------------------------------- Using Albums from Bootstrap------------------>
+   
+
+  <!--------------------------------- Album Finished ------------------------------>
+
+
+
+
+  <!-------------------------------------- Main Content Closed----------------------------------------------->
+
+  <!-------------------------------------- Pagination Start----------------------------------------------->
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-------------------------------------- Pagination Closed----------------------------------------------->
+
