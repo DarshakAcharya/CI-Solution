@@ -5,6 +5,7 @@ using CI_Platform_Entites.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CI_Platform.Controllers
@@ -37,7 +38,7 @@ namespace CI_Platform.Controllers
             var Ab =_db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password==model.Password);
             if (Ab == null)
             {
-                ViewBag.loginerror = "email adress & password not match";
+                ViewBag.loginerror = "Email address & password does not match";
                 return View();  
             }
 
@@ -45,14 +46,163 @@ namespace CI_Platform.Controllers
 
             return RedirectToAction("LandingPage", "Home" ,new{@id=Ab.UserId});
         }
-
-        public IActionResult Filter()
+    [HttpPost]
+        public async Task<IActionResult> FilterMissions(string? SearchInput, long[] CountryFilter, long[] CityFilter, long[] MissionThemeFilter, long[] MissionSkillFilter, string MissionSort = "", int pg = 1)
         {
-            
-            return PartialView();
+            const int pageSize = 3;
+            Missions = _db.Missions.Include(m => m.MissionSkills).ToList();
+
+            long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            var user = _db.Users.FirstOrDefault(e => e.UserId == UserId);
+            ViewBag.user = user;
+
+            var filter = new FilterVM
+            {
+                SearchInput = SearchInput?.ToLower(),
+                CountryFilter = CountryFilter,
+                CityFilter = CityFilter,
+                ThemesFilter = MissionThemeFilter,
+                SkillsFilter = MissionSkillFilter,
+
+            };
+
+        
+            var result = from Cmission in _db.Missions
+                         join Mission_Theme in _db.MissionThemes on Cmission.ThemeId equals Mission_Theme.MissionThemeId
+                         select new { Mission_Theme.Title, Cmission.MissionId };
+            var MyCity = from Mission in _db.Missions
+                         join City in _db.Cities on Mission.CityId equals City.CityId
+                         select new { Mission.CityId, City.Name };
+            var Goal = from Gmission in _db.Missions
+                       join GoalMission in _db.GoalMissions on Gmission.MissionId equals GoalMission.MissionId
+                       select new { Gmission.MissionId, GoalMission.GoalValue, GoalMission.GoalObjectiveText };
+            Missions = _db.Missions.Include(m => m.MissionSkills).ToList();
+            ViewBag.Countries = _db.Countries.ToList();
+            ViewBag.Cities = _db.Cities.ToList();
+            ViewBag.Themes = _db.MissionThemes.ToList();
+            ViewBag.Skills = _db.Skills.ToList();
+
+            var Skills = _db.Skills.Where(m => m.DeletedAt == null);
+
+
+            foreach (var mission in Missions)
+            {
+                var theme = result.Where(result => result.MissionId == mission.MissionId).FirstOrDefault();
+                var city = MyCity.Where(MyCity => MyCity.CityId == mission.CityId).FirstOrDefault();
+                var goal = Goal.Where(Goal => Goal.MissionId == mission.MissionId).FirstOrDefault();
+                string[] startDate = mission.StartDate.ToString().Split(' ');
+                string[] endDate = mission.EndDate.ToString().Split(' ');
+
+
+                missionVMList.Add(new MissionVM()
+                {
+                    MissionId = mission.MissionId,
+                    Title = mission.Title,
+                    ShortDescription = mission.ShortDescription,
+                    Description = mission.Description,
+                    Organization = mission.OrganizationName,
+                    OrganizationDetails = mission.OrganizationDetail,
+                    //Rating = mission.MissionRatings,
+                    //ADD MISSION IMAGE URL HERE
+                    //Theme = mission.Theme,
+                    //ADD PROGRESS HERE
+                    //ADD recent volunteers here
+                    missionType = mission.MissionType,
+                    isFavrouite = mission.FavoriteMissions.Any(),
+                    createdAt = DateTime.Now,
+                    Theme = theme.Title,
+                    CityId = mission.CityId,
+                    CountryId = mission.CountryId,
+                    ThemeId = mission.ThemeId,
+
+
+                    StartDate = startDate[0],
+                    EndDate = endDate[0],
+                    //City = mission.City,
+                    City = city.Name,
+                    NoOfSeatsLeft = int.Parse(mission.Availability),
+                    progress = int.Parse(goal.GoalValue),
+                    GoalAim = goal.GoalObjectiveText,
+
+                    MissionSkills = mission.MissionSkills.Join(Skills, ms => ms.MissionSkillId, s => s.SkillId, (ms, s) => ms).ToList(),
+
+
+                });
+            }
+
+            // filtering
+            if (filter != null)
+            {
+                if (!string.IsNullOrEmpty(filter.SearchInput))
+                {
+                    missionVMList = missionVMList.Where(m => m.Title.ToLower().Contains(filter.SearchInput)).ToList();
+                }
+                if (filter.CountryFilter != null && filter.CountryFilter.Length > 0)
+                {
+                    foreach (var country in filter.CountryFilter)
+                    {
+                        missionVMList = missionVMList.Where(m => country == m.CountryId).ToList();
+                    }
+                }
+                if (filter.CityFilter != null && filter.CityFilter.Length > 0)
+                {
+                    missionVMList = missionVMList.Where(m => filter.CityFilter.Any(cf => cf == m.CityId)).ToList();
+                }
+                if (filter.ThemesFilter != null && filter.ThemesFilter.Length > 0)
+                {
+                    missionVMList = missionVMList.Where(m => filter.ThemesFilter.Any(tf => tf == m.ThemeId)).ToList();
+                }
+                if (filter.SkillsFilter != null && filter.SkillsFilter.Length > 0)
+                {
+                    missionVMList = missionVMList.Where(m => m.MissionSkills.Any(ms => filter.SkillsFilter.Any(sf => sf == ms.SkillId))).ToList();
+                }
+            }
+
+
+            MissionListingVM missionListingVM = new MissionListingVM();
+            missionListingVM.Missions = missionVMList;
+            missionListingVM.MissionCount = missionVMList.Count();
+            ViewBag.missionListingVM = missionListingVM;
+
+            return PartialView("_MissionListingPartial", missionListingVM);
         }
 
-         
+        //public async Task<IActionResult> FilterMissions(string SearchInput, string[] CountryFilter, string[] CityFilter, string[] MissionThemeFilter, string[] MissionSkillFilter, string MissionSort = "", int pg = 1)
+        //{
+        //    string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        //    const int pageSize = 3;
+        //    var filter = new MissionFilter
+        //    {
+        //        SearchInput = SearchInput,
+        //        Country = CountryFilter,
+        //        City = CityFilter,
+        //        MissionThemes = MissionThemeFilter,
+        //        MissionSkills = MissionSkillFilter
+        //    };
+        //    List<MissionsDetailsVM> MissionsDetails = _unitOfWork.Mission.GetAllMissions(userId, filter, MissionSort);
+        //    // Pagination Code
+        //    int missionCounts = MissionsDetails.Count();
+        //    if (pg < 1)
+        //        pg = 1;
+        //    int totalPages = Pager.getTotalPages(missionCounts, pageSize);
+        //    if (pg > totalPages)
+        //        pg = totalPages;
+        //    int recSkip = (pg - 1) * pageSize;
+        //    var pager = new Pager(missionCounts, pg, pageSize);
+        //    // Missions on Current page
+        //    List<MissionsDetailsVM> PageMissionsDetails = MissionsDetails.Skip(recSkip).Take(pager.PageSize).ToList();
+
+        //    MissionListingVM MissionListing = new MissionListingVM
+        //    {
+        //        MissionCount = missionCounts,
+        //        Pager = pager,
+        //        Missions = PageMissionsDetails
+        //    };
+
+        //    return PartialView("Index", MissionListing);
+        //}
+
+
         public IActionResult ForgotPassword()
         {
             return View();
@@ -66,7 +216,7 @@ namespace CI_Platform.Controllers
                 var ABC = _db.Users.FirstOrDefault(u => u.Email == model.Email);
                 if (ABC == null)
                 {
-                    ViewBag.Emailnotexist = "email address does not exist";
+                    ViewBag.Emailnotexist = "Email address does not exist";
                 }
             }
             return View();
@@ -142,8 +292,13 @@ namespace CI_Platform.Controllers
             var Goal = from Gmission in _db.Missions
                        join GoalMission in _db.GoalMissions on Gmission.MissionId equals GoalMission.MissionId
                        select new { Gmission.MissionId, GoalMission.GoalValue, GoalMission.GoalObjectiveText };
-            Missions = _db.Missions.ToList();
+            Missions = _db.Missions.Include(m => m.MissionSkills).ToList();
+            ViewBag.Countries = _db.Countries.ToList();
+            ViewBag.Cities = _db.Cities.ToList();
+            ViewBag.Themes = _db.MissionThemes.ToList();
+            ViewBag.Skills = _db.Skills.ToList();
 
+            var Skills = _db.Skills.Where(m => m.DeletedAt == null);
 
 
             foreach (var mission in Missions)
@@ -153,6 +308,8 @@ namespace CI_Platform.Controllers
                 var goal = Goal.Where(Goal => Goal.MissionId == mission.MissionId).FirstOrDefault();
                 string[] startDate = mission.StartDate.ToString().Split(' ');
                 string[] endDate = mission.EndDate.ToString().Split(' ');
+
+                
                 missionVMList.Add(new MissionVM()
                 {
                     MissionId = mission.MissionId,
@@ -180,6 +337,9 @@ namespace CI_Platform.Controllers
                     progress = int.Parse(goal.GoalValue),
                     GoalAim = goal.GoalObjectiveText,
 
+                    MissionSkills = mission.MissionSkills.Join(Skills, ms => ms.MissionSkillId, s => s.SkillId, (ms, s) => ms).ToList(),
+
+
                 })  ;
             }
 
@@ -192,6 +352,13 @@ namespace CI_Platform.Controllers
 
              
             return View(missionListingVM);
+        }
+
+        public IActionResult MissionDetailPage(long id)
+        {
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.user = user;
+            return View();
         }
 
 

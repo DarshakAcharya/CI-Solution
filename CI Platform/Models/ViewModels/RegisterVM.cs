@@ -4,6 +4,7 @@ namespace CI_Platform.Models.ViewModels
 {
     public class RegisterVM
     {
+
         [Required]
         public string? FirstName { get; set; }
 

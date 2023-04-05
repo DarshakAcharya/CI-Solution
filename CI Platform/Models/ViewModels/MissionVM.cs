@@ -51,7 +51,16 @@ namespace CI_Platform.Models.ViewModels
             public string Deadline { get; set; }
 
             public DateTime createdAt { get; set; }
-        }
+
+        public string  Skills { get; set; }
+        public List<MissionSkill> MissionSkills { get; set; }
+
+        public long CountryId { get; set; }
+        public long CityId { get; set; }
+        public long ThemeId { get; set; }
+
+
+    }
 
     }
 

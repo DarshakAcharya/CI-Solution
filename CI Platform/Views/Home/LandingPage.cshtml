@@ -55,7 +55,7 @@
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
             <img src="~/Images/user-img.png" alt="user_img" width="40" height="40"
-              class="rounded-circle">@ViewBag.user.FirstName @ViewBag.user.LastName
+              class="rounded-circle">&nbsp; @ViewBag.user.FirstName @ViewBag.user.LastName
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="#">My profile</a></li>
@@ -98,13 +98,14 @@
 
         <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown"
           aria-expanded="false">Country</a>
-        <ul class="dropdown-menu">
-          <input type="checkbox" id="India" name="India" value="India">
-          <label for="India"> India</label><br>
-          <input type="checkbox" id="Australia" name="Australia" value="Australia">
-          <label for="Australia"> Australia</label><br>
-          <input type="checkbox" id="USA" name="USA" value="USA">
-          <label for="USA">USA</label><br>
+        <ul class="dropdown-menu overflow-y-auto" style="height:200px">
+            @foreach(var country in ViewBag.Countries)
+            {
+                            
+                            <input type="checkbox" id="@country.CountryId" name="CountryFilter" value="@country.CountryId">
+                            <label for="@country.CountryId"> @country.Name</label><br>
+            }
+           
         </ul>
 
       </div>
@@ -113,15 +114,13 @@
       <div class="card">
 
         <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown" aria-expanded="false">City</a>
-        <ul class="dropdown-menu">
-          <input type="checkbox" id="Mumbai" name="Mumbai" value="Mumbai">
-          <label for="Mumbai"> Mumbai</label><br>
-          <input type="checkbox" id="Delhi" name="Delhi" value="Delhi">
-          <label for="Delhi"> Delhi</label><br>
-          <input type="checkbox" id="Bhavnagar" name="Bhavnagar" value="Bhavnagar">
-          <label for="Bhavnagar"> Bhavnagar</label><br>
-          <input type="checkbox" id="Ahmedabad" name="Ahmedabad" value="Ahmedabad">
-          <label for="Ahmedabad">Ahmedabad</label><br>
+        <ul class="dropdown-menu overflow-y-auto" style="height:200px">
+            @foreach(var city in ViewBag.Cities)
+            {
+          <input type="checkbox" id="@city.CityId" name="CityFilter" value="@city.CityId">
+          <label for="@city.CityId"> @city.Name </label><br>
+            }
+           
         </ul>
 
       </div>
@@ -132,13 +131,13 @@
 
         <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown"
           aria-expanded="false">Theme</a>
-        <ul class="dropdown-menu">
-          <input type="checkbox" id="Theme-1" name="Theme-1" value="Theme-1">
-          <label for="Theme-1"> Theme-1</label><br>
-          <input type="checkbox" id="Theme-2" name="Theme-2" value="Theme-2">
-          <label for="Theme-2"> Theme-2</label><br>
-          <input type="checkbox" id="Theme-3" name="Theme-3" value="Theme-3">
-          <label for="Theme-3">Theme-3</label><br>
+        <ul class="dropdown-menu overflow-y-auto" style="height:200px">
+            @foreach(var theme in ViewBag.Themes)
+            {
+          <input type="checkbox" id="@theme.MissionThemeId" name="MissionThemeFilter" value="@theme.MissionThemeId">
+          <label for="@theme.MissionThemeId"> @theme.Title</label><br>
+            }
+           
         </ul>
 
       </div>
@@ -149,17 +148,14 @@
 
         <a class="nav-link dropdown-toggle big_button" href="#" data-bs-toggle="dropdown"
           aria-expanded="false">Skills</a>
-        <ul class="dropdown-menu">
-          <input type="checkbox" id="Skill-1" name="Skill-1" value="Skill-1">
-          <label for="Skill-1"> Skill-1</label><br>
-          <input type="checkbox" id="Skill-2" name="Skill-2" value="Skill-2">
-          <label for="Skill-2"> Skill-2</label><br>
-          <input type="checkbox" id="Skill-3" name="Skill-3" value="Skill-3">
-          <label for="Skill-3"> Skill-3</label><br>
-          <input type="checkbox" id="Skill-4" name="Skill-4" value="Skill-4">
-          <label for="Skill-4">Skill-4</label><br>
-          <input type="checkbox" id="Skill-5" name="Skill-5" value="Skill-5">
-          <label for="Skill-5"> Skill-5</label><br>
+        <ul class="dropdown-menu overflow-y-auto" style="height:200px">                                                     
+            @foreach(var skill in ViewBag.Skills)
+            {
+          <input type="checkbox" id="@skill.SkillId" name="MissionSkillFilter" value="@skill.SkillId">
+          <label for="@skill.SkillId"> @skill.SkillName</label><br>
+           
+            }
+          
         </ul>
 
       </div>
@@ -174,8 +170,8 @@
   <!-------------------------------------- Header closed----------------------------------------------->
 
   <!-------------------------------------- MAIN CONTENT START----------------------------------------------->
+  <div id="listingPartial">  <partial name="_MissionListingPartial"  model=Model></partial></div>
 
-  <partial name="_MissionListingPartial" model=Model></partial>
 
   <!-------------------------------------- MAIN CONTENT END----------------------------------------------->
 
@@ -193,7 +189,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-    <script src="~/js/site.js"></script>
+    <script src="~/js/site.js" asp-append-version=true></script>
 </body>
 
 </html>
