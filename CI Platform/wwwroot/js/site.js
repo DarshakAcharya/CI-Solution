@@ -37,6 +37,11 @@ function filterMission(e) {
         success: function (response) {
             console.log(response);
             $('#listingPartial').html(response);
+            if (localStorage.getItem("viewPreference") === "list") {
+                list();
+            } else {
+                grid();
+            }
         },
 
             error: function (xhr, status, error) {

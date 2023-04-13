@@ -1,4 +1,6 @@
-﻿@{
+﻿
+
+@{
     Layout = "_none";
 }
 
@@ -17,6 +19,8 @@
 
 <body>
     <hr>
+
+   
     <header class="p!importantmptop mb-3 border-b!importantmportantttom" style="margin:1rem">
         <div class="container" style="margin-bottom ">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -128,7 +132,7 @@
         <!-- For Card Details -->
         <div class="card_details col-5" style="">
 
-            <h3>CSR Initiative Stands For Coffee and Farmer Equity</h3>
+            <h3>@ViewBag.Mission.Title</h3>
 
             <p class="c-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
                 laboriosam
@@ -143,7 +147,7 @@
             border-width: 1px;
             border-radius: 50px;">
 
-                    <p class="c-text" style="padding: 4px; width: 9.5rem;">Plant 10,000 Trees</p>
+                    <p class="c-text" style="padding: 4px; ">@ViewBag.GoalMission.GoalObjectiveText</p>
                 </span>
                 <hr class="w-50">
             </div>
@@ -153,7 +157,7 @@
                 <div class="d-flex me-auto ">
                     <img src="~/Images/Seats-left.png" alt="" class="mt-2"
                         style="width: 2.2rem;height: 2.4rem;">
-                    <div class="ms-2 "> 25
+                    <div class="ms-2 "> @ViewBag.Mission.Availability
                         <fs-2></fs-2><br>
                         <fs-5> Seats left</fs-5>
                     </div>
@@ -162,11 +166,11 @@
                 <img src="~/Images/mission.png" style="width: 2.2rem;height: 2.4rem;" alt="" class="mt-2">
                 <div class="ms-2" style="width:11vw;">
                     <div class="progress mt-2" role="progressbar" style="width:10vw;" aria-label="Example with label"
-                        aria-valuenow=80 aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar bg-warning" style="width:80%"><span
-                                style="color:black">80%</span></div>
+                        aria-valuenow=@ViewBag.GoalMission.GoalValue aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-warning" style="width:@ViewBag.GoalMission.GoalValue%"><span
+                                style="color:black">@ViewBag.GoalMission.GoalValue%</span></div>
                     </div>
-                    8000 Achieved
+                    8000 Achieved: Skills: @ViewBag.skills.Skill
                 </div>
 
 
@@ -204,28 +208,28 @@
                     <img src="~/Images/pin1.png" alt="location">
                     <br>
                     <p class="text-1">City</p>
-                    <p class="text-2">London</p>
+                    <p class="text-2">@ViewBag.City.Name</p>
 
                 </div>
                 <div class="col-2" style="border-style: solid; border-width: 1px;">
                     <img src="~/Images/web.png" alt="location">
                     <br>
                     <p class="text-1">Theme</p>
-                    <p class="text-2">Environment</p>
+                    <p class="text-2">@ViewBag.Theme.Title</p>
 
                 </div>
                 <div class="col-2" style="border-style: solid; border-width: 1px;">
                     <img src="~/Images/calender.png" alt="location">
                     <br>
                     <p class="text-1">Date</p>
-                    <p class="text-2">Ongoing Opportunity</p>
+                    <p class="text-2">From @ViewBag.StartDate[0] untill @ViewBag.EndDate[0]</p>
 
                 </div>
                 <div class="col-2" style="border-style: solid; border-width: 1px;">
                     <img src="~/Images/organization.png" alt="location">
                     <br>
                     <p class="text-1">Organization</p>
-                    <p class="text-2">CSE network</p>
+                    <p class="text-2">@ViewBag.Mission.OrganizationName</p>
 
                 </div>
             </div>
