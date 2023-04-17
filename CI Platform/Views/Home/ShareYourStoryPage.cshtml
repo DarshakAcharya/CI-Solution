@@ -1,0 +1,132 @@
+﻿ @{
+    Layout = "_none";
+}
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story LIsting Page | Company</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/ShareYourStoryPage.css" >
+</head>
+<body>
+
+    
+  <header class="p!importantmptop mb-3 border-b!importantmportantttom" style="margin:1rem">
+    <div class="container" style="margin-bottom ">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <!-- <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li> -->
+          <li><a href="#" class="nav-link px-2 link-dark">Stories</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle policy" href="#" data-bs-toggle="dropdown"
+              aria-expanded="false">Policy</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Policy 1</a></li>
+              <li><a class="dropdown-item" href="#">Policy 2</a></li>
+              <li><a class="dropdown-item" href="#">Policy 3</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="~/Images/user-img.png" alt="user_img" width="40" height="40"
+              class="rounded-circle">&nbsp; @ViewBag.user.FirstName @ViewBag.user.LastName
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><a class="dropdown-item" href="#">My profile</a></li>
+            <li><a class="dropdown-item" href="#">Volunteering timesheet</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <hr> 
+
+  
+
+<main>
+    <div style="margin-top:2rem; margin-left:13rem; margin-right:12rem;  ">
+        <h1>Share your story</h1>
+
+        <div class="row" style="margin-top:2rem">
+              
+               <div class="dropdown col">
+                    <label for="SelectMission">Select Mission</label>  <br />
+                    <select name="SelectMission" id="SelectMission" style="width:100%; height:56%">
+                        <option value="default">Select your mission</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                        <option value="M3">M3</option>
+                    </select>
+                </div>
+ 
+              <div class="col">
+                My Story Title <br> 
+                <input type="text" placeholder="Enter story title" style="width:100%"></input>
+              </div>
+
+              <div class="col">
+                Date <br> 
+                <input type="date" placeholder="Select Date" style="width:100%"></input>
+              </div>
+        </div>
+
+        <div class="MyStory" style="margin-top:2rem">
+            
+            <h3>My Story | Put CKeditor link here!</h3>
+
+        </div>
+
+        <div class="Video_url" style="margin-top:2rem">
+            Enter Video URL <br> 
+            <input type="text" placeholder="Enter your URL" style="width:100%"></input>
+        </div>
+
+        <div class="Upload_photos" style="margin-top:2rem">
+            <h3>Upload your Photos | Tiny-D site link for photos upload!</h3>
+        </div>
+
+        <div class="buttns d-flex" style="margin-top:2rem;justify-content:space-between">
+            
+            <div><a href="/Home/StoryListingPage/@ViewBag.user.UserId" style="border-style:solid;border-width:2px; border-radius:50px; padding:0.5rem; text-decoration:none;color:black;border-color:black">Cancel</a></div>    
+             
+            
+
+            <div>
+            <a href="" style="border-style:solid;border-width:2px; border-radius:50px; padding:0.5rem;text-decoration:none;color:darkorange;border-color:darkorange">Save</a>
+            <a href="" style="border-style:solid;border-width:2px; border-radius:50px; padding:0.5rem;text-decoration:none;color:darkorange;border-color:darkorange">Submit</a>
+            </div>
+        </div>
+
+</main>
+
+
+ <footer>
+        <hr>
+        <span class="footer_link"><a   target="_main" class="footer_text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy policy</a></span>
+      </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    
+ 
+</body>
+</html>

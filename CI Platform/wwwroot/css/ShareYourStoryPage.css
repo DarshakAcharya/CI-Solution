@@ -1,128 +1,165 @@
-﻿/*CSS of List View Card*/
+﻿
+/*CSS of List View Card*/
 
-h3{
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.card-text {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.User_Img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+
+
+.User_Name {
+    font-size: 13px;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+
+
+.View-details {
+    justify-content: center;
+    width: 8rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 50px;
+}
+
+h3 {
     margin-top: 2.4rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.logo-text{
-    /* width: 0.8rem; */
-    height: 1.2rem;
+.logo-text {
+    / width: 0.8rem;
+    / height: 1.2rem;
     margin-top: 0.2rem;
-    /* font-size:16px;  */
+    / font-size:16px;
+    /
 }
 
 
-.logo-text-m{
+.logo-text-m {
     margin-left: 1rem;
 }
 
 
 
-.row-card{
+.row-card {
     background-color: whitesmoke;
 }
 
-.location{
+.location {
     display: flex;
     color: grey;
 }
 
-.line-text{
+.line-text {
     margin-left: 0.4rem;
     font-size: 17px;
 }
 
-.aim-text{
+.aim-text {
     color: grey;
 }
 
-.wrap{
+.wrap {
     display: flex;
 }
 
-.sub-wrap{
+.sub-wrap {
     display: flex;
 }
 
-.seats_left_img{
+.seats_left_img {
     height: 2rem;
     margin-top: 0.6rem;
 }
 
-.seats_text{
+.seats_text {
     color: grey;
     font-size: 14px;
     margin-bottom: 1.5rem;
 }
 
-.seats_container{
+.seats_container {
     margin-top: 1.5rem;
     padding-left: 2rem !important;
     display: flex;
     flex-direction: row;
 }
 
-.seats_no{
+.seats_no {
     font-size: 18px;
     color: grey;
     margin-bottom: 0rem;
     font-weight: 600;
 }
 
-.no_and_text{
+.no_and_text {
     padding-left: 1rem;
 }
 
-.progressBar_color{
+.progressBar_color {
     padding: 0rem !important;
     margin-left: 14rem;
     margin-top: 1.5rem !important;
     position: absolute;
 }
 
-.achieved{
+.achieved {
     width: 6rem;
     margin-left: 4rem;
 }
 
-.achieved-2{
+.achieved-2 {
     margin-left: 4rem;
 }
 
-.achieve_wrap{
+.achieve_wrap {
 }
 
-.progress{
+.progress {
 }
 
-.d-f_wrap{
+.d-f_wrap {
     display: flex;
 }
 
-.set{
+.set {
     margin-top: 1.5rem;
     margin-left: -5rem;
     position: relative;
 }
 
-.tools_img{
+.tools_img {
     width: 30px;
     margin-bottom: 2rem;
 }
 
-.apply_btn_text{
+.apply_btn_text {
     padding-top: 0.4rem;
     padding-left: 1.3rem;
     font-size: 20px;
     color: darkorange;
 }
 
-.apply_btn{
+.apply_btn {
     display: flex;
 }
 
-button{
+button {
     height: 3rem;
     border-radius: 50px !important;
     border-color: darkorange;
@@ -131,7 +168,7 @@ button{
     margin-left: 5rem;
 }
 
-  
+
 /*CSS of List View Card-Finished*/
 
 
@@ -391,7 +428,7 @@ button {
 } */
 
 .footer_link {
-    padding: 15rem;
+    padding-left: 15rem;
 }
 
 .footer_text {
@@ -400,9 +437,7 @@ button {
 }
 
 .round_button {
-    margin-top:1.5rem !important
-     
-    text-align: center;
+    margin-top: 1.5rem !important;
     border: 1px solid;
     color: grey;
     border-color: grey;
@@ -431,8 +466,7 @@ button {
     color: grey;
     border-color: grey;
     margin-left: 9rem;
-    margin-top:-12rem !important;
-    
+    margin-top: -12rem !important;
     /*width: 5rem;
     height:2rem;*/
     text-align: center;
@@ -446,7 +480,6 @@ button {
     border-color: grey;
     margin-left: 9rem;
     margin-top: -12rem !important;
-    
     text-align: center;
     margin: auto;
     padding-left: 1rem;
@@ -477,7 +510,6 @@ button {
 
 .no_and_text {
     padding-left: 1rem;
-    
 }
 
 
@@ -520,9 +552,8 @@ button {
     margin-left: 4rem;
 }
 
-.card-text{
-    margin-top:1rem !important;
-
+.card-text {
+    margin-top: 1rem !important;
 }
 
 @media SCREEN and (max-width:1500px) {

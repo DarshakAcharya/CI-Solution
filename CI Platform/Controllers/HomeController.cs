@@ -1,4 +1,6 @@
-﻿using CI_Platform.Models;
+﻿ 
+
+using CI_Platform.Models;
 using CI_Platform.Models.ViewModels;
 using CI_Platform_Entites.Data;
 using CI_Platform_Entites.Models;
@@ -391,7 +393,7 @@ namespace CI_Platform.Controllers
             var user = _db.Users.FirstOrDefault(e => e.UserId == id);
             var Mission = _db.Missions.FirstOrDefault(m => m.MissionId == missionId);
             var GoalMission = _db.GoalMissions.FirstOrDefault( g => g.MissionId == missionId);
-            var city = _db.Cities.FirstOrDefault(c => c.CityId == Mission.CityId);
+            //var city = _db.Cities.FirstOrDefault(c => c.CityId == Mission.CityId);
             var theme = _db.MissionThemes.FirstOrDefault(c => c.MissionThemeId == Mission.ThemeId);
             var StartDate = Mission.StartDate.ToString().Split(' ');
             var EndDate = Mission.EndDate.ToString().Split(' ');
@@ -401,7 +403,7 @@ namespace CI_Platform.Controllers
             ViewBag.user = user;
             ViewBag.Mission = Mission;
             ViewBag.GoalMission = GoalMission;
-            ViewBag.City = city;
+            //ViewBag.City = city;
             ViewBag.Theme = theme;
             ViewBag.StartDate = StartDate;
             ViewBag.EndDate = EndDate;
@@ -422,6 +424,46 @@ namespace CI_Platform.Controllers
 
         public IActionResult MissionListingPage()
         {
+            return View();
+        }
+
+        
+        public IActionResult StoryListingPage(long id)
+        {
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.Countries = _db.Countries.ToList();
+            ViewBag.Cities = _db.Cities.ToList();
+            ViewBag.Themes = _db.MissionThemes.ToList();
+            ViewBag.Skills = _db.Skills.ToList();
+
+            ViewBag.user = user;
+            return View();
+        }
+
+        public IActionResult ShareYourStoryPage(long id)
+        {
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.Countries = _db.Countries.ToList();
+            ViewBag.Cities = _db.Cities.ToList();
+            ViewBag.Themes = _db.MissionThemes.ToList();
+            ViewBag.Skills = _db.Skills.ToList();
+
+            ViewBag.user = user;
+
+            return View();
+        }
+
+        public IActionResult StoryDetailPage(long id)
+        {
+            
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.Countries = _db.Countries.ToList();
+            ViewBag.Cities = _db.Cities.ToList();
+            ViewBag.Themes = _db.MissionThemes.ToList();
+            ViewBag.Skills = _db.Skills.ToList();
+
+            ViewBag.user = user;
+
             return View();
         }
 
