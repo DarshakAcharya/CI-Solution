@@ -25,7 +25,7 @@ namespace CI_Platform.Models.ViewModels
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password does not match.")]
         public string ConfirmPassword { get; set; } = null!;
     }
 }

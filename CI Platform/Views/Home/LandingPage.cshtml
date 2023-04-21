@@ -1,13 +1,13 @@
 ﻿@using CI_Platform.Models.ViewModels
 @model MissionListingVM
 
-
+@*
 @{
     Layout = "_none";
-}
+}*@
 
 <!DOCTYPE html>
-<html lang="en">
+<html !importantmportantang="e!importantmportant">
 
 <head>
 
@@ -21,12 +21,26 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
      <link rel="stylesheet" href="~/css/landingpage.css">
+     <style>
+         .form-control:hover{
+             outline:none!important;
+             box-shadow:none!important;
+             
+         }
+
+         .form-control:focus{
+             outline:none!important;
+               box-shadow:none!important;
+               border-color:grey;
+               
+         }
+     </style>
 </head>
  
 
 <body>
 
-  <header class="p!importantmptop mb-3 border-b!importantmportantttom" style="margin:1rem">
+  @*<header class="p!importantmptop mb-3 border-b!importantmportantttom" style="margin:1rem">
     <div class="container" style="margin-bottom ">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
@@ -69,7 +83,7 @@
         </div>
       </div>
     </div>
-  </header>
+  </header>*@
 
 
 
@@ -178,18 +192,15 @@
 
   <!-------------------------------------- Footer Start------------------------------------------------------->
 
-  <footer>
+  @*<footer>
     <hr>
     <span class="footer_link"><a   target="_main" class="footer_text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy policy</a></span>
-  </footer>
+  </footer>*@
 
   <!-------------------------------------- Footer Closed------------------------------------------------------->
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version=true></script>
+
 </body>
 
 </html>

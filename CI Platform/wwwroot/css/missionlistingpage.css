@@ -1,4 +1,13 @@
-﻿.navbar-toggler {
+﻿
+.form-control:hover{
+    outline:none !important;
+}
+
+.form-control:focus{
+    outline:none !important;
+}
+
+.navbar-toggler {
     color: grey !important;
 }
 

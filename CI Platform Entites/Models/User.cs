@@ -43,6 +43,8 @@ public partial class User
 
     public DateTime? DeletedAt { get; set; }
 
+    public string? Availability { get; set; }
+
     public virtual City? City { get; set; }
 
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();

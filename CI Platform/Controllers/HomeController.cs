@@ -19,7 +19,7 @@ namespace CI_Platform.Controllers
         private readonly CiPlatformContext _db;
 
         private List<Mission> Missions = new List<Mission>();
-        
+
         private List<MissionVM> missionVMList = new List<MissionVM>();
 
         public HomeController(ILogger<HomeController> logger, CiPlatformContext db)
@@ -37,17 +37,19 @@ namespace CI_Platform.Controllers
         public IActionResult Index(LoginVM model)
 
         {
-            var Ab =_db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password==model.Password);
+            var Ab = _db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
             if (Ab == null)
             {
                 ViewBag.loginerror = "Email address & password does not match";
-                return View();  
+                return View();
             }
 
             HttpContext.Session.SetString("UserId", Ab.UserId.ToString());
 
-            return RedirectToAction("LandingPage", "Home" ,new{@id=Ab.UserId});
+            return RedirectToAction("LandingPage", "Home", new { @id = Ab.UserId });
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> FilterMissions(string? SearchInput, long[] CountryFilter, long[] CityFilter, long[] MissionThemeFilter, long[] MissionSkillFilter, string MissionSort = "", int pg = 1)
@@ -70,31 +72,31 @@ namespace CI_Platform.Controllers
             };
 
             //Pagination Code
-        //        int missionCounts = Missions.Count();
-        //    if (pg < 1)
-        //        pg = 1;
-        //    int totalPages = Pager.getTotalPages(missionCounts, pageSize);
-        //    if (pg > totalPages)
-        //        pg = totalPages;
-        //    int recSkip = (pg - 1) * pageSize;
-        //    var pager = new Pager(missionCounts, pg, pageSize);
-        //    // Missions on Current page
-        //    List<MissionsDetailsVM> PageMissionsDetails = MissionsDetails.Skip(recSkip).Take(pager.PageSize).ToList();
+            //        int missionCounts = Missions.Count();
+            //    if (pg < 1)
+            //        pg = 1;
+            //    int totalPages = Pager.getTotalPages(missionCounts, pageSize);
+            //    if (pg > totalPages)
+            //        pg = totalPages;
+            //    int recSkip = (pg - 1) * pageSize;
+            //    var pager = new Pager(missionCounts, pg, pageSize);
+            //    // Missions on Current page
+            //    List<MissionsDetailsVM> PageMissionsDetails = MissionsDetails.Skip(recSkip).Take(pager.PageSize).ToList();
 
-        //    MissionListingVM MissionListing = new MissionListingVM
-        //    {
-        //        MissionCount = missionCounts,                                                     
-        //        Pager = pager,
-        //        Missions = PageMissionsDetails
-        //    };
+            //    MissionListingVM MissionListing = new MissionListingVM
+            //    {
+            //        MissionCount = missionCounts,                                                     
+            //        Pager = pager,
+            //        Missions = PageMissionsDetails
+            //    };
 
-        //    return PartialView("Index", MissionListing);
-        //}
-
-
+            //    return PartialView("Index", MissionListing);
+            //}
 
 
-        var result = from Cmission in _db.Missions
+
+
+            var result = from Cmission in _db.Missions
                          join Mission_Theme in _db.MissionThemes on Cmission.ThemeId equals Mission_Theme.MissionThemeId
                          select new { Mission_Theme.Title, Cmission.MissionId };
             var MyCity = from Mission in _db.Missions
@@ -168,7 +170,7 @@ namespace CI_Platform.Controllers
                 {
                     //foreach (var country in filter.CountryFilter)
                     //{
-                        missionVMList = missionVMList.Where(m => filter.CountryFilter.Any(x => x == m.CountryId)).ToList();
+                    missionVMList = missionVMList.Where(m => filter.CountryFilter.Any(x => x == m.CountryId)).ToList();
                     //}
                 }
                 if (filter.CityFilter != null && filter.CityFilter.Length > 0)
@@ -231,8 +233,8 @@ namespace CI_Platform.Controllers
         //}
 
 
-        
-         
+
+
 
 
         public IActionResult ForgotPassword()
@@ -306,12 +308,12 @@ namespace CI_Platform.Controllers
             return View();
         }
 
-       
+
 
         public IActionResult LandingPage(long id)
         {
             string myVariable = HttpContext.Session.GetString("UserId");
-            if(myVariable == null)
+            if (myVariable == null)
             {
                 return RedirectToAction("Index");
             }
@@ -319,7 +321,7 @@ namespace CI_Platform.Controllers
             ViewBag.user = user;
             var result = from Cmission in _db.Missions
                          join Mission_Theme in _db.MissionThemes on Cmission.ThemeId equals Mission_Theme.MissionThemeId
-                         select new { Mission_Theme.Title,Cmission.MissionId};
+                         select new { Mission_Theme.Title, Cmission.MissionId };
             var MyCity = from Mission in _db.Missions
                          join City in _db.Cities on Mission.CityId equals City.CityId
                          select new { Mission.CityId, City.Name };
@@ -343,7 +345,7 @@ namespace CI_Platform.Controllers
                 string[] startDate = mission.StartDate.ToString().Split(' ');
                 string[] endDate = mission.EndDate.ToString().Split(' ');
 
-                
+
                 missionVMList.Add(new MissionVM()
                 {
                     MissionId = mission.MissionId,
@@ -367,14 +369,14 @@ namespace CI_Platform.Controllers
                     EndDate = endDate[0],
                     //City = mission.City,
                     City = city.Name,
-                    NoOfSeatsLeft =int.Parse(mission.Availability),
+                    NoOfSeatsLeft = int.Parse(mission.Availability),
                     progress = int.Parse(goal.GoalValue),
                     GoalAim = goal.GoalObjectiveText,
 
                     MissionSkills = mission.MissionSkills.Join(Skills, ms => ms.MissionSkillId, s => s.SkillId, (ms, s) => ms).ToList(),
 
 
-                })  ;
+                });
             }
 
             MissionListingVM missionListingVM = new MissionListingVM
@@ -384,22 +386,22 @@ namespace CI_Platform.Controllers
 
             };
 
-             
+
             return View(missionListingVM);
         }
 
-        public IActionResult MissionDetailPage(long id, long missionId )
+        public IActionResult MissionDetailPage(long id, long missionId)
         {
             var user = _db.Users.FirstOrDefault(e => e.UserId == id);
             var Mission = _db.Missions.FirstOrDefault(m => m.MissionId == missionId);
-            var GoalMission = _db.GoalMissions.FirstOrDefault( g => g.MissionId == missionId);
+            var GoalMission = _db.GoalMissions.FirstOrDefault(g => g.MissionId == missionId);
             //var city = _db.Cities.FirstOrDefault(c => c.CityId == Mission.CityId);
             var theme = _db.MissionThemes.FirstOrDefault(c => c.MissionThemeId == Mission.ThemeId);
             var StartDate = Mission.StartDate.ToString().Split(' ');
             var EndDate = Mission.EndDate.ToString().Split(' ');
             var skills = _db.MissionSkills.Include(s => s.Skill).ToList();
-            
-             
+
+
             ViewBag.user = user;
             ViewBag.Mission = Mission;
             ViewBag.GoalMission = GoalMission;
@@ -408,8 +410,8 @@ namespace CI_Platform.Controllers
             ViewBag.StartDate = StartDate;
             ViewBag.EndDate = EndDate;
             ViewBag.Skills = skills;
-            
-            
+
+
             return View();
         }
 
@@ -427,7 +429,7 @@ namespace CI_Platform.Controllers
             return View();
         }
 
-        
+
         public IActionResult StoryListingPage(long id)
         {
             var user = _db.Users.FirstOrDefault(e => e.UserId == id);
@@ -455,7 +457,7 @@ namespace CI_Platform.Controllers
 
         public IActionResult StoryDetailPage(long id)
         {
-            
+
             var user = _db.Users.FirstOrDefault(e => e.UserId == id);
             ViewBag.Countries = _db.Countries.ToList();
             ViewBag.Cities = _db.Cities.ToList();
@@ -467,8 +469,206 @@ namespace CI_Platform.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        //public IActionResult MyProfilePage(long id)
+        //{
+
+        //    var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+        //    ViewBag.user = user;
+
+
+        //    return View();
+        //}
+
+        public IActionResult TestView()
         {
+            return View();
+        }
+
+        public IActionResult VolunteeringTimeSheet(long id)
+        {
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.user = user;
+            return View();
+        }
+
+        //public IActionResult ModalPopUp(long id)
+        //{
+        //    var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+        //    ViewBag.user = user;
+        //    return View();
+        //}
+
+
+        //Edit Profile
+        public IActionResult MyProfilePage(long id)
+        {
+            //var userid = HttpContext.Session.GetString("userID");
+            //UserVM user = new UserVM();
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.user = user;
+            //user.Singleuser = _CiPlatformContext.Users.FirstOrDefault(u => u.UserId == Convert.ToInt32(userid)); Pelethi commented
+            //    var u = _db.Users.FirstOrDefault(u => u.UserId == Convert.ToInt32(userid));
+
+            //    user.Countries = _db.Countries.ToList();
+            //    user.cities = _db.Cities.ToList();
+            //    user.userSkills = _db.UserSkills.Where(u => u.UserId == Convert.ToInt32(userid)).ToList();
+            //    user.skills = _db.Skills.ToList();
+
+            //    user.FirstName = u.FirstName;
+            //    user.LastName = u.LastName;
+            //    user.EmployeeId = u.EmployeeId;
+            //    user.Title = u.Title;
+            //    user.Department = u.Department;
+            //    user.ProfileText = u.ProfileText;
+            //    user.WhyIVolunteer = u.WhyIVolunteer;
+            //    user.CountryId = u.CountryId;
+            //    user.CityId = u.CityId;
+            //    user.LinkedInUrl = u.LinkedInUrl;
+            //    if (u.Avatar != null)
+            //    {
+            //        user.UserAvatar = u.Avatar;
+            //    }
+
+
+
+            //    var allskills = _db.Skills.ToList();
+            //    ViewBag.allskills = allskills;
+            //    var skills = from US in _db.UserSkills
+            //                 join S in _db.Skills on US.SkillId equals S.SkillId
+            //                 select new { US.SkillId, S.SkillName, US.UserId };
+
+            //    var uskills = skills.Where(e => e.UserId == Convert.ToInt32(userid)).ToList();
+            //    ViewBag.userskills = uskills;
+            //    foreach (var skill in uskills)
+            //    {
+            //        var rskill = allskills.FirstOrDefault(e => e.SkillId == skill.SkillId);
+            //        allskills.Remove(rskill);
+            //    }
+            //    ViewBag.remainingSkills = allskills;
+
+
+            //    return View(user);
+            //}
+
+            //[HttpPost]
+            //public async Task<IActionResult> EditProfileAsync(UserVM user)
+            //{
+            //    user.Countries = _db.Countries.ToList();
+            //    user.cities = _db.Cities.ToList();
+            //    var userid = HttpContext.Session.GetString("userID");
+            //    var obj = _db.Users.Where(u => u.UserId == Convert.ToInt32(userid)).FirstOrDefault();
+
+            //    obj.FirstName = user.FirstName;
+            //    obj.LastName = user.LastName;
+            //    obj.EmployeeId = user.EmployeeId;
+            //    obj.Title = user.Title;
+            //    obj.Department = user.Department;
+            //    obj.ProfileText = user.ProfileText;
+            //    obj.WhyIVolunteer = user.WhyIVolunteer;
+            //    obj.LinkedInUrl = user.LinkedInUrl;
+            //    obj.CityId = user.CityId;
+            //    obj.CountryId = user.CountryId;
+
+            //    if (user.Avatar != null)
+            //    {
+            //        var FileName = "";
+            //        using (var ms = new MemoryStream())
+            //        {
+            //            await user.Avatar.CopyToAsync(ms);
+            //            var imageBytes = ms.ToArray();
+            //            var base64String = Convert.ToBase64String(imageBytes);
+            //            FileName = "data:image/png;base64," + base64String;
+            //        }
+            //        obj.Avatar = FileName;
+            //    }
+
+            //    _db.Users.Add(obj);
+            //    _db.Users.Update(obj);
+            //    _db.SaveChanges();
+
+            return View();
+        }
+
+        //Editprofile ChangePassword
+        //[HttpPost]
+        //public bool ChangePassword(string old, string newp, string cnf)
+        //{
+
+        //    var userid = HttpContext.Session.GetString("userID");
+        //    var user = _db.Users.Where(e => e.UserId == Convert.ToInt32(userid)).FirstOrDefault();
+
+        //    if (old != user.Password)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        var pass = _db.Users.FirstOrDefault(u => u.Password == old);
+        //        pass.Password = newp;
+
+        //        _db.Users.Update(pass);
+        //        _db.SaveChanges();
+
+        //        return true;
+        //    }
+
+        //}
+
+        [HttpPost]
+        public IActionResult MyProfilePage(MyProfilePageVM data)
+        {
+            if ( data != null )
+            {
+                string myVariable = HttpContext.Session.GetString("UserId");
+
+                var user = _db.Users.FirstOrDefault(e => e.UserId == long.Parse(myVariable));
+                ViewBag.user = user;
+
+                var id = _db.Cities.FirstOrDefault(c => c.Name == data.City);
+
+
+                var UserEdit = _db.Users.FirstOrDefault(e => e.UserId == long.Parse(myVariable));
+
+                UserEdit.FirstName = data.Name;
+                UserEdit.LastName = data.Surname;
+                UserEdit.EmployeeId = data.EmployeeID;
+                //Manager = data.Manager,
+                UserEdit.Title = data.Title;
+                UserEdit.Department = data.Department;
+                UserEdit.ProfileText = data.MyProfile;
+                UserEdit.WhyIVolunteer = data.WhyIVolunteer;
+                UserEdit.CityId = 1;
+                UserEdit.CountryId = 1;
+                    //Availability = data.Availability,
+                    //LinkedInUrl = data.LinkedIn,
+
+
+
+
+
+
+            _db.Users.Update(UserEdit);
+            _db.SaveChanges();
+            return RedirectToAction("MyProfilePage");
+
+        }
+            else
+            {
+                string myVariable = HttpContext.Session.GetString("UserId");
+
+                var user = _db.Users.FirstOrDefault(e => e.UserId == long.Parse(myVariable));
+                ViewBag.user = user;
+                TempData["errorMessage"] = "Empty form can't be submitted";
+                return View(data);
+            }
+
+            return View();
+        }
+
+        public IActionResult Privacy(long id)
+        {
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.user = user;
             return View();
         }
 
@@ -477,5 +677,65 @@ namespace CI_Platform.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult CMS(long id)
+        {
+            var user = _db.Users.FirstOrDefault(e => e.UserId == id);
+            ViewBag.user = user;
+            MissionListingVM model = new MissionListingVM();    
+            DateTime currentDate = DateTime.Now;
+            return View(model);
+ 
+        }
+
+
+
+
+
+
+
+
+
     }
+
+    //         if (ModelState.IsValid)
+    //            {
+    //                var obj = _db.Users.Where(e => e.Email == user.Email).FirstOrDefault();
+    //                if (obj == null)
+    //                {
+    //                    // Hash the user's password using Bcrypt
+
+    //                    //where(function(e){
+    //                    //    return e.Email == user.Email
+    //                    //})
+    //                    var data = new User()
+    //                    {
+    //                        FirstName = user.FirstName,
+    //                        LastName = user.LastName,
+    //                        Email = user.Email,
+    //                        Password = user.Password,
+    //                        PhoneNumber = user.PhoneNumber,
+    //                        CountryId = null,
+    //                        CityId = null
+    //                    };
+    //        _db.Users.Add(data);
+    //                    _db.SaveChanges();
+    //                    return RedirectToAction("Index");
+    //    }
+    //                else
+    //                {
+    //                    TempData["userExists"] = "Email already exists";
+    //                    return View(user);
+    //}
+
+
+    //            }
+    //            else
+    //{
+    //    TempData["errorMessage"] = "Empty form can't be submitted";
+    //    return View(user);
+    //}
+
+
+
 }

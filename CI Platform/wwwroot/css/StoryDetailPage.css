@@ -1,0 +1,277 @@
+﻿.footer_link {
+    padding: 15rem;
+}
+
+.footer_text {
+    color: black;
+    text-decoration: none;
+}
+
+.c-text {
+    font-size: 17px;
+}
+
+.text-1 {
+    font-size: 13px;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+.text-2 {
+    font-size: 15px;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+    position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    float: left;
+    width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;
+}
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+
+/* Cards CSS */
+.card {
+    margin-bottom: 1rem;
+}
+
+.list-view .row > [class*=col-] {
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+.list-view .card {
+    flex-direction: row;
+}
+
+@media (max-width: 575.98px) {
+    .list-view .card {
+        flex-direction: column;
+    }
+}
+
+.list-view .card > .card-img-top {
+    width: auto;
+}
+
+.list-view .card .card-body {
+    display: inline-block;
+}
+
+.card-body {
+    padding: 1%;
+}
+
+
+.btn-time {
+    background-color: white;
+    z-index: 1 !important;
+    position: relative;
+    border: 1px solid #E8E8E8;
+}
+
+
+hr {
+    flex: 1;
+    border: 1px solid grey;
+    height: 2px;
+    background: black;
+}
+
+.date-btn {
+    border-radius: 22px;
+    background-color: white;
+    width: auto;
+    border: 1px solid #E8E8E8;
+}
+
+.applybtn {
+    border: 2px solid #F88634;
+    background-color: white;
+    border-radius: 24px;
+    margin-left: 37%;
+    / padding: 3%;
+    / margin-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.applytxt {
+    color: #F88634;
+    font-size: 17px;
+}
+
+.grid {
+    background-color: #E8E8E8;
+    border-radius: 15px;
+    padding: 3%;
+    border: none;
+}
+
+.list {
+    border: none;
+    background-color: white;
+}
+
+.sort {
+    border: 1px solid grey;
+    height: max-content;
+}
+
+.sortby {
+    width: max-content;
+}
+
+.sortaerrow {
+    margin-top: 10%;
+}
+
+.missionimg {
+    position: relative !important;
+}
+
+.card {
+    box-shadow: 6px 6px 10px lightgrey;
+}
+
+.img-event {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+.landing-page-top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+}
+
+.landing-page-top-left {
+    position: absolute;
+    top: 8px;
+    left: 0px;
+    padding: 5px 10px;
+    border-end-end-radius: 30px;
+    border-start-end-radius: 30px;
+    color: white;
+    background-color: rgba(0, 170, 8, 0.80);
+    font-size: 14px;
+    width: 6vw;
+}
+
+.landing-page-bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.list-group-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.landing-page-btn-img {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    padding: 6px;
+}
+
+.theme-btn {
+    border-radius: 22px;
+    background-color: white;
+    border: white;
+    z-index: 1;
+    top: 95%;
+    left: 35%;
+    position: absolute !important;
+}
+
+/* Cards CSS ends */
+

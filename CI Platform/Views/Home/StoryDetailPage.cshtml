@@ -1,6 +1,4 @@
-﻿ @{
-    Layout = "_none";
-}
+﻿  
 
  <!DOCTYPE html>
 <html lang="en">
@@ -8,14 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story LIsting Page | Company</title>
+    <title>Story Detail Page | Company</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/StoryListingPage.css">
+    <link rel="stylesheet" href="~/css/StoryDetailPage.css">
 </head>
 <body>
 
     
-  <header class="p!importantmptop mb-3 border-b!importantmportantttom" style="margin:1rem">
+  @*<header class="p!importantmptop mb-3 border-b!importantmportantttom" style="margin:1rem">
     <div class="container" style="margin-bottom ">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
@@ -29,7 +27,7 @@
           <li><a href="#" class="nav-link px-2 link-dark">Stories</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle policy" href="#" data-bs-toggle="dropdown"
-              aria-expanded="false">Policy</a>
+              aria-expanded="false" style="color:black">Policy</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Policy 1</a></li>
               <li><a class="dropdown-item" href="#">Policy 2</a></li>
@@ -59,18 +57,182 @@
       </div>
     </div>
   </header>
+  <hr>*@
 
-  <main>
+   <main>
 
-  </main>
+        <!-- Detail card Starts -->
+        <div class="mission-card d-flex row" >
+        <!-- For Card Slide show Gallery -->
+         <!-- Container for the image gallery -->
+        <div class=" container col-5" style="margin-right: 0rem; margin-left:10rem; margin-top:3rem">
 
-  <footer>
+            <!-- Full-width images with number text -->
+            <div class="mySlides">
+                <div class="numbertext">1 / 4</div>
+                <img src="~/Images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-10.png"
+                    style="width:100%"/>
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 4</div>
+                <img src="~/Images/img2.png" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 4</div>
+                <img src="~/Images/Grow-Trees-On-the-path-to-environment-sustainability-4.png"
+                    style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">4 / 4</div>
+                <img src="~/Images/img22.png" style="width:100%">
+            </div>
+
+
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+
+            <!-- Thumbnail images -->
+            <div class="row">
+                <div class="column">
+                    <img class="demo cursor"
+                        src="~/Images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-10.png"
+                        style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Images/img2.png" style="width:100%"
+                        onclick="currentSlide(2)" alt="Cinque Terre">
+                </div>
+                <div class="column">
+                    <img class="demo cursor"
+                        src="~/Images/Grow-Trees-On-the-path-to-environment-sustainability-4.png"
+                        style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Images/img22.png" style="width:100%"
+                        onclick="currentSlide(4)" alt="Northern Lights">
+                </div>
+            </div>
+        </div>
+        <!-- Card Slide show Gallery End Here -->
+        <!-- For Card Details -->
+        <div class="card_details col-5" style="margin-left:1rem; margin-top:2rem; margin-left:2rem">
+
+             <div class="author">
+                 <img src="~/Images/volunteer2.png" style="width:5rem; height:5rem; border-radius:50%; margin-top:3rem"> <br> 
+                 Charles Vigue
+             </div>
+
+            <p class="c-text" style="margin-top:2rem">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
+                laboriosam
+                commodi quidem aspernatur!<br> <br>
+             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
+                laboriosam
+                commodi quidem aspernatur!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
+                laboriosam
+                commodi quidem aspernatur! <br /> <br />
+
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
+                laboriosam
+                commodi quidem aspernatur!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
+                laboriosam
+                commodi quidem aspernatur!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias illo sequi
+                laboriosam
+                 
+
+            </p>
+
+
+
+           
+
+            <div class="d-flex" style="justify-content: space-evenly;">
+                
+                <span class="d-flex" style="border-style: solid;border-width: 1px;border-radius: 50px;width: 16rem;margin-top:0.2rem">
+                    <img src="~/Images/add1.png" alt="recommend"
+                        style="height: 1.5rem; margin-top: 0.5rem; margin-left: 0.5rem;">&nbsp;<p class="c-text"
+                        style="margin-top: 0.5rem;">Recommend to a co-worker</p>
+                </span>
+
+                <span class="d-flex" style="border-style: solid;border-width: 1px;border-radius: 50px;width: 15rem;border-color:darkorange; color:darkorange; justify-content:center;margin-top:0.2rem">
+                    <p class="c-text"
+                        style="margin-top:0.4rem;margin-left:1rem">Open Mission</p> <img src="~/Images/right-arrow.png" style="width:1.5rem;height:1.5rem; justify-content:center;margin-top:0.5rem;align-items:center; margin-left:1rem" >
+                </span>
+
+            </div>
+            <br />
+ 
+        </div>
+          </div>
+        
+        <!-- Detail card Ends Here-->
+        <div style="margin-left:10rem; margin-top:2rem">
+            <h3>Grow Trees-On the path to environment sustainability</h3>
+            <br />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p><br />
+
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p><br />
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+            </p> <br /> <br /> <br />
+
+            <p>We use these technologies for a number of purposes, such as:</p>
+            <br />
+            <ul>
+                <li>
+                    But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.
+                </li>
+                 <li>
+                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+                </li>
+                 <li>
+                     excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+                </li>
+                 <li>
+                     On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized
+                </li>
+                 <li>
+                     But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain. 
+                </li>
+                 <li>
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                </li>
+            </ul>
+
+            <br />
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+            </p>
+
+        </div>
+        <br /> <br />
+
+        
+ 
+    </main>
+
+  @*<footer>
         <hr>
         <span class="footer_link"><a   target="_main" class="footer_text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy policy</a></span>
-      </footer>
+      </footer>*@
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     
+    <script src="~/js/StoryDetail.js"></script>
  
 </body>
 </html>

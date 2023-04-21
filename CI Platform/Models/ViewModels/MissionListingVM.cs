@@ -9,7 +9,11 @@ namespace CI_Platform.Models.ViewModels
        //public Pager Pager { get; set; }
        public List<MissionVM> Missions { get; set; }
 
-        
-        
+        public long UserId { get; set; }
+
+
+
+
+
     }
 }
